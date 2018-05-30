@@ -1,0 +1,18 @@
+0.check_notfound_anonymous.sh
+	#parameters:
+		- feed
+		- input
+		- mapping
+	#steps:
+		1. get list msisdn dari chg (Aparty append Bparty append accountowner/eventsource) lalu di urut dan distinct
+		2. compare list_msisdn chg tadi dengan list msisdn dari Mapping_MSISDN_SBCRBRID.txt lalu terbentuk listmsisdn chg yg not found di mapping
+		3. get biggest_subscriberID dari Mapping_MSISDN_SBCRBRID.txt
+		4. looping per row msisdn yg not found td, lalu append (jika bisa) "[msisdn_notfound],[biggest_subscriberID]+1..2..3..dst,[10/10/1900]" di Mapping_MSISDN_SBCRBRID.txt
+1.flink_anonymous
+	#parameters: 
+		- feed
+		- input
+		- mapping
+		- output
+	#steps:
+	
